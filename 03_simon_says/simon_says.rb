@@ -6,12 +6,10 @@ def shout(command)
 	command.upcase
 end
 
-def repeat(*commands)
-	if commands.length == 1
-		"#{commands[0]} #{commands[0]}"
-	else
-		word = "#{commands[0]} #{commands[0]} #{commands[0]}"	
-	end
+def repeat(command, num = 2)
+	array = []
+	num.times { array << command }
+	array * (" ")
 end
 
 def start_of_word(word, number)
