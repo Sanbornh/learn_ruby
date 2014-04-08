@@ -4,7 +4,6 @@ class Dictionary
 
 	def initialize
 		@entries = {}
-		# @keywords = []
 	end
 
 	def add(entry)
@@ -16,7 +15,7 @@ class Dictionary
 	end
 
 	def keywords
-		@keywords = @entries.keys
+		@keywords = @entries.keys.sort
 	end
 
 	def include?(key)
@@ -27,4 +26,43 @@ class Dictionary
 			false
 		end
 	end
+
+	def include_partial?(entry)
+		keywords
+		@search_results = {}
+		@keywords.each do |word| 
+			if word.include? entry
+				@search_results = @search_results.merge({word => @entries[word]})
+			end
+		end
+	end
+
+	def find(entry)
+		if include?(entry)
+			{ entry => @entries[entry] }
+		elsif include_partial?(entry)
+			@search_results 
+		else 
+			{}
+		end
+	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
